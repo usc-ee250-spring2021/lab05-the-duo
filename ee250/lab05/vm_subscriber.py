@@ -9,10 +9,22 @@ def on_connect(client, userdata, flags, rc):
     print("Connected to server (i.e., broker) with result code "+str(rc))
 
     #subscribe to the ultrasonic ranger topic here
+    client.subscribe("sesay/ultrasonicRanger")
+    client.message_callback_add("sesay/ultrasonicRanger", mycallback)
+    client.subscribe("sesay/button")
+    client.message_callback_add("sesay/button", buttoncallback)
+
 
 #Default message callback. Please use custom callbacks.
 def on_message(client, userdata, msg):
     print("on_message: " + msg.topic + " " + str(msg.payload, "utf-8"))
+def mycallback(client,userdata,msg):
+    print("VM:" + str(msg.payload, "utf-8") + "cm")
+def buttoncallback(client,userdata,msg):
+    if msg.payload == "1":
+        print("Button Pressed!")
+    else:
+        print("Nothing")
 
 if __name__ == '__main__':
     #this section is covered in publisher_and_subscriber_example.py
