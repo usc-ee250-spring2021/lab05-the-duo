@@ -47,9 +47,13 @@ if __name__ == '__main__':
          
         #print("delete this line")
         y = grovepi.ultrasonicRead(ultrasonicRanger)
+        print(y)
         z = str(y)
+        print(z)
         buttonpress = grovepi.digitalRead(button)
+        print(buttonpress)
         buttonstring = str(buttonpress)
+
         client.publish("sesay/button",buttonstring)
      
         client.publish("sesay/ultrasonicRanger", z)
