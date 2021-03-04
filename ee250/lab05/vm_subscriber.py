@@ -21,6 +21,7 @@ def on_message(client, userdata, msg):
 def mycallback(client,userdata,msg):
     print("VM:" + str(msg.payload, "utf-8") + "cm")
 def buttoncallback(client,userdata,msg):
+    print(msg.payload)
     if msg.payload == "1":
         print("Button Pressed!")
     else:
