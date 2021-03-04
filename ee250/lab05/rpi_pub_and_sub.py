@@ -49,7 +49,7 @@ if __name__ == '__main__':
         y = grovepi.ultrasonicRead(ultrasonicRanger)
         z = str(y)
         buttonpress = grovepi.digitalRead(button)
-        buttonstring = str(buttonpress, "utf-8")
+        buttonstring = str(buttonpress)
         client.publish("sesay/button",buttonstring)
      
         client.publish("sesay/ultrasonicRanger", z)
