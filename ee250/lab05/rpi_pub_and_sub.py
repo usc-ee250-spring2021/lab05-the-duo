@@ -47,8 +47,8 @@ if __name__ == '__main__':
          
         print("delete this line")
         y = grovepi.ultrasonicRead(ultrasonicRanger)
-        z = str(y, "utf-8")
-        buttonpress = grovepi.digitlRead(button)
+        z = str(y)
+        buttonpress = grovepi.digitalRead(button)
         buttonstring = str(buttonpress, "utf-8")
         client.publish("sesay/button",buttonstring)
      
