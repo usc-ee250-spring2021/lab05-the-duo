@@ -45,7 +45,7 @@ if __name__ == '__main__':
 
     while True:
          
-        print("delete this line")
+        #print("delete this line")
         y = grovepi.ultrasonicRead(ultrasonicRanger)
         z = str(y)
         buttonpress = grovepi.digitalRead(button)
