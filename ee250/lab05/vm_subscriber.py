@@ -23,7 +23,7 @@ def mycallback(client,userdata,msg):
 def buttoncallback(client,userdata,msg):
     decode = str(msg.payload, "utf-8")
     print(decode)
-    if decode == "1":
+    if decode == "0":
         print("Button Pressed!")
     else:
         print("Nothing")
