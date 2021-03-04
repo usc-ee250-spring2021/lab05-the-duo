@@ -26,6 +26,7 @@ def on_press(key):
         #send "w" character to rpi
     elif k == 'a':
         print("a")
+        client.publish("sesay/led", "LED_ON")
         # send "a" character to rpi
         #send "LED_ON"
     elif k == 's':
@@ -33,6 +34,7 @@ def on_press(key):
         # send "s" character to rpi
     elif k == 'd':
         print("d")
+        client.publish("sesay/led", "LED_OFF")
         # send "d" character to rpi
         # send "LED_OFF"
 
