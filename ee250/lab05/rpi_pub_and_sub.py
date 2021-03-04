@@ -7,7 +7,7 @@ import time
 import grovepi
 
 
-ultrasonicRanger = 2
+ultrasonicRanger = 0
 
 button = 4
 
