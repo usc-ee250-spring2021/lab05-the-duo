@@ -25,7 +25,7 @@ def buttoncallback(client,userdata,msg):
     print(decode)
     if decode == "1":
         print("Button Pressed!")
-    if decode != "1"
+    if decode != "1":
         print("Nothing")
 
 if __name__ == '__main__':
