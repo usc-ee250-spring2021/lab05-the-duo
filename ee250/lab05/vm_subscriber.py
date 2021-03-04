@@ -23,9 +23,9 @@ def mycallback(client,userdata,msg):
 def buttoncallback(client,userdata,msg):
     decode = str(msg.payload, "utf-8")
     print(decode)
-    if decode == "0":
+    if decode == "1":
         print("Button Pressed!")
-    else:
+    if decode != "1"
         print("Nothing")
 
 if __name__ == '__main__':
@@ -37,7 +37,7 @@ if __name__ == '__main__':
     client.loop_start()
 
     while True:
-        print("delete this line")
+        #print("delete this line")
         time.sleep(1)
             
 
