@@ -108,5 +108,6 @@ if __name__ == '__main__':
      
         client.publish("sesay/ultrasonicRanger", z)
         time.sleep(1)
+        #print("Aaron")
             
 
