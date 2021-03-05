@@ -7,6 +7,8 @@ import time
 import grovepi
 import grove_rgb_lcd
 
+import threading
+lock = threading.Lock()
 
 ultrasonicRanger = 3
 
