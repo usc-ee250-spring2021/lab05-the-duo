@@ -1,5 +1,7 @@
 """EE 250L Lab 04 Starter Code
-
+Jeffrey Liu
+Aaron Sesay
+https://github.com/usc-ee250-spring2021/lab05-the-duo.git
 Run vm_publisher.py in a separate terminal on your VM."""
 
 import paho.mqtt.client as mqtt
