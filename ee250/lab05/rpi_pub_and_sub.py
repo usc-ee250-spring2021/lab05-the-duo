@@ -10,6 +10,34 @@ import grove_rgb_lcd
 import threading
 lock = threading.Lock()
 
+def protect(fn):
+    def safefn(*arg,**kwarg):
+        with lock:
+            return fn(*arg,**kwarg)
+    return safefn
+
+
+# patch grovepi
+
+#fn = grovepi.__getattribute__('read_i2c_block')
+#grovepi.__setattr__('read_i2c_block',protect(fn))
+#fn = grovepi.__getattribute__('write_i2c_block')
+#grovepi.__setattr__('write_i2c_block',protect(fn))
+
+
+grovepi.read_i2c_block = protect(grovepi.read_i2c_block)
+grovepi.write_i2c_block = protect(grovepi.write_i2c_block)
+
+
+#patch grove_rgb_lcd
+for x in dir(grove_rgb_lcd.bus):
+    if '12c' in x or 'read' in x or 'write' in x:
+        print('patching->',x)
+        fn = grove_rgb_lcd.bus.__getattribute__(x)
+        grove_rgb_lcd.bus.__setattr__(x,protect(fn))
+
+
+
 ultrasonicRanger = 3
 
 button = 4
@@ -35,17 +63,17 @@ def ledcallback(client,userdata,msg):
 def lcdcallback(client,userdata,msg):
     y = str(msg.payload, "utf-8")
     if y == "w":
-        with lock:
-            grove_rgb_lcd.setText("w")
+   
+        grove_rgb_lcd.setText("w")
     if y == "a":
-        with lock:
-            grove_rgb_lcd.setText("a")
+     
+        grove_rgb_lcd.setText("a")
     if y == "s":
-        with lock:
-            grove_rgb_lcd.setText("s")
+        
+        grove_rgb_lcd.setText("s")
     if y == "d":
-        with lock:
-            grove_rgb_lcd.setText("d")
+        
+        grove_rgb_lcd.setText("d")
 
 
     client.subscribe("sesay/defaultCallback")
@@ -66,15 +94,15 @@ if __name__ == '__main__':
     while True:
          
         #print("delete this line")
-        with lock:
-            y = grovepi.ultrasonicRead(ultrasonicRanger)
+
+        y = grovepi.ultrasonicRead(ultrasonicRanger)
         print(y)
         z = str(y)
         print(z)
-        with lock:
-            buttonpress = grovepi.digitalRead(button)
-            print(buttonpress)
-            buttonstring = str(buttonpress)
+       
+        buttonpress = grovepi.digitalRead(button)
+        print(buttonpress)
+        buttonstring = str(buttonpress)
 
         client.publish("sesay/button",buttonstring)
      
