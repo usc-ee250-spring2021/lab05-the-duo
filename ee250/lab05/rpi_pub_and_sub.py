@@ -11,7 +11,7 @@ ultrasonicRanger = 3
 
 button = 4
 
-
+grovepi.pinMode(ultrasonicRanger,"INPUT")
 grovepi.pinMode(button,"INPUT")
 
 def on_connect(client, userdata, flags, rc):
