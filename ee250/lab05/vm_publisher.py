@@ -16,11 +16,11 @@ def on_message(client, userdata, msg):
     print("on_message: " + msg.topic + " " + str(msg.payload, "utf-8"))
 
 def on_press(key):
-    try: 
+    try:
         k = key.char # single-char keys
-    except: 
+    except:
         k = key.name # other keys
-    
+   
     if k == 'w':
         print("w")
         client.publish("sesay/lcd", "w")
@@ -57,5 +57,3 @@ if __name__ == '__main__':
     while True:
         #print("delete this line")
         time.sleep(1)
-            
-
