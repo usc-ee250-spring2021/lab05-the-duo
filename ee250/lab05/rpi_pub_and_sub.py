@@ -22,13 +22,13 @@ def on_connect(client, userdata, flags, rc):
     client.message_callback_add("sesay/led", ledcallback)
     client.subscribe("sesay/lcd")
     client.message_callback_add("sesay/lcd",lcdcallback)
-def ledcallback(client,userdata,msg)
+def ledcallback(client,userdata,msg):
     x = str(msg.payload, "utf-8")
     if x == "LED_ON":
         grovepi.digitalWrite(led,1)
     if x == "LED_OFF": 
         grovepi.digitalWrite(led,0)
-def lcdcallback(client,userdata,msg)
+def lcdcallback(client,userdata,msg):
     y = str(msg.payload, "utf-8")
     if y == "w":
         grove_rgb_lcd.setText("w")
