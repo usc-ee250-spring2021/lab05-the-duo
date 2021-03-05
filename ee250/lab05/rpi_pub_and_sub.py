@@ -7,36 +7,6 @@ import time
 import grovepi
 import grove_rgb_lcd
 
-import threading
-lock = threading.Lock()
-
-def protect(fn):
-    def safefn(*arg,**kwarg):
-        with lock:
-            return fn(*arg,**kwarg)
-    return safefn
-
-
-# patch grovepi
-
-#fn = grovepi.__getattribute__('read_i2c_block')
-#grovepi.__setattr__('read_i2c_block',protect(fn))
-#fn = grovepi.__getattribute__('write_i2c_block')
-#grovepi.__setattr__('write_i2c_block',protect(fn))
-
-
-grovepi.read_i2c_block = protect(grovepi.read_i2c_block)
-grovepi.write_i2c_block = protect(grovepi.write_i2c_block)
-
-
-#patch grove_rgb_lcd
-for x in dir(grove_rgb_lcd.bus):
-    if '12c' in x or 'read' in x or 'write' in x:
-        print('patching->',x)
-        fn = grove_rgb_lcd.bus.__getattribute__(x)
-        grove_rgb_lcd.bus.__setattr__(x,protect(fn))
-
-
 
 ultrasonicRanger = 3
 
