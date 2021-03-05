@@ -24,7 +24,7 @@ def mycallback(client,userdata,msg):
     print("VM:" + str(msg.payload, "utf-8") + "cm")
 def buttoncallback(client,userdata,msg):
     decode = str(msg.payload, "utf-8")
-    print(decode)
+    #print(decode)
     if decode == "1":
         print("Button Pressed!")
     #if decode != "1":
