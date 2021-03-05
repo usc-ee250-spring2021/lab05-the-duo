@@ -68,12 +68,12 @@ if __name__ == '__main__':
         #print("delete this line")
 
         y = grovepi.ultrasonicRead(ultrasonicRanger)
-        print(y)
+        #print(y)
         z = str(y)
-        print(z)
+        #print(z)
        
         buttonpress = grovepi.digitalRead(button)
-        print(buttonpress)
+        #print(buttonpress)
         buttonstring = str(buttonpress)
 
         client.publish("sesay/button",buttonstring)
