@@ -5,12 +5,14 @@ Run rpi_pub_and_sub.py on your Raspberry Pi."""
 import paho.mqtt.client as mqtt
 import time
 import grovepi
-import grove_rgb_lcd
+#import grove_rgb_lcd
+from grove_rgb_lcd import *
 
 
 ultrasonicRanger = 3
 
 button = 4
+led = 2
 
 grovepi.pinMode(ultrasonicRanger,"INPUT")
 grovepi.pinMode(button,"INPUT")
@@ -25,11 +27,11 @@ def on_connect(client, userdata, flags, rc):
 def ledcallback(client,userdata,msg):
     x = str(msg.payload, "utf-8")
     if x == "LED_ON":
-        with lock:
-            grovepi.digitalWrite(led,1)
+        #with lock:
+        grovepi.digitalWrite(led,1)
     if x == "LED_OFF":
-        with lock:
-            grovepi.digitalWrite(led,0)
+        #with lock:
+        grovepi.digitalWrite(led,0)
 def lcdcallback(client,userdata,msg):
     y = str(msg.payload, "utf-8")
     if y == "w":
@@ -39,10 +41,10 @@ def lcdcallback(client,userdata,msg):
      
         grove_rgb_lcd.setText("a")
     if y == "s":
-        
+       
         grove_rgb_lcd.setText("s")
     if y == "d":
-        
+       
         grove_rgb_lcd.setText("d")
 
 
@@ -79,5 +81,3 @@ if __name__ == '__main__':
         client.publish("sesay/ultrasonicRanger", z)
         time.sleep(1)
         #print("Aaron")
-            
-
