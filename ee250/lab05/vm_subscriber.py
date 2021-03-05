@@ -1,5 +1,7 @@
 """EE 250L Lab 04 Starter Code
-
+Jeffrey Liu
+Aaron Sesay
+https://github.com/usc-ee250-spring2021/lab05-the-duo.git
 Run vm_subscriber.py in a separate terminal on your VM."""
 
 import paho.mqtt.client as mqtt
@@ -25,8 +27,8 @@ def buttoncallback(client,userdata,msg):
     print(decode)
     if decode == "1":
         print("Button Pressed!")
-    if decode != "1":
-        print("Nothing")
+    #if decode != "1":
+     #   print("Nothing")
 
 if __name__ == '__main__':
     #this section is covered in publisher_and_subscriber_example.py
@@ -39,5 +41,3 @@ if __name__ == '__main__':
     while True:
         #print("delete this line")
         time.sleep(1)
-            
-
