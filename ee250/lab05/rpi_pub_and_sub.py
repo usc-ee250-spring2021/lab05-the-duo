@@ -27,19 +27,25 @@ def on_connect(client, userdata, flags, rc):
 def ledcallback(client,userdata,msg):
     x = str(msg.payload, "utf-8")
     if x == "LED_ON":
-        grovepi.digitalWrite(led,1)
-    if x == "LED_OFF": 
-        grovepi.digitalWrite(led,0)
+        with lock:
+            grovepi.digitalWrite(led,1)
+    if x == "LED_OFF":
+        with lock:
+            grovepi.digitalWrite(led,0)
 def lcdcallback(client,userdata,msg):
     y = str(msg.payload, "utf-8")
     if y == "w":
-        grove_rgb_lcd.setText("w")
+        with lock:
+            grove_rgb_lcd.setText("w")
     if y == "a":
-        grove_rgb_lcd.setText("a")
+        with lock:
+            grove_rgb_lcd.setText("a")
     if y == "s":
-        grove_rgb_lcd.setText("s")
+        with lock:
+            grove_rgb_lcd.setText("s")
     if y == "d":
-        grove_rgb_lcd.setText("d")
+        with lock:
+            grove_rgb_lcd.setText("d")
 
 
     client.subscribe("sesay/defaultCallback")
@@ -60,13 +66,15 @@ if __name__ == '__main__':
     while True:
          
         #print("delete this line")
-        y = grovepi.ultrasonicRead(ultrasonicRanger)
+        with lock:
+            y = grovepi.ultrasonicRead(ultrasonicRanger)
         print(y)
         z = str(y)
         print(z)
-        buttonpress = grovepi.digitalRead(button)
-        print(buttonpress)
-        buttonstring = str(buttonpress)
+        with lock:
+            buttonpress = grovepi.digitalRead(button)
+            print(buttonpress)
+            buttonstring = str(buttonpress)
 
         client.publish("sesay/button",buttonstring)
      
