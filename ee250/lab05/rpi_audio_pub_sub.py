@@ -18,7 +18,7 @@ import grovepi
 
 # Connect the Grove Buzzer to digital port D8
 # SIG,NC,VCC,GND
-buzzer = 8
+buzzer = 3
 
 grovepi.pinMode(buzzer,"OUTPUT")
 
