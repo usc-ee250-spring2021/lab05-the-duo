@@ -8,7 +8,6 @@ import statistics
 buzzer = 3
 button = 4
 grovepi.pinMode(button,"INPUT")
-#note_produced = 69
 tones = {
 "B0": 31,
 "B1": 62,
